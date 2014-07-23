@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=1024, user-scalable=no">
+
+	<title>Your deck.js Presentation</title>
+
+	<!-- Required stylesheet -->
+	<link rel="stylesheet" href="core/deck.core.css">
+
+	<!-- Extension CSS files go here. Remove or add as needed. -->
+	<link rel="stylesheet" media="screen" href="extensions/goto/deck.goto.css">
+	<link rel="stylesheet" media="screen" href="extensions/menu/deck.menu.css">
+	<link rel="stylesheet" media="screen" href="extensions/navigation/deck.navigation.css">
+	<link rel="stylesheet" media="screen" href="extensions/status/deck.status.css">
+	<link rel="stylesheet" media="screen" href="extensions/scale/deck.scale.css">
+
+	<!-- Style theme. More available in /themes/style/ or create your own. -->
+	<link rel="stylesheet" media="screen" href="themes/style/swiss.css">
+
+	<!-- Transition theme. More available in /themes/transition/ or create your own. -->
+	<link rel="stylesheet" media="screen" href="themes/transition/horizontal-slide.css">
+
+	<!-- Basic black and white print styles -->
+	<link rel="stylesheet" media="print" href="core/print.css">
+
+	<link rel="stylesheet" href="ig/style.css">
+
+	<!-- Required Modernizr file -->
+	<script src="modernizr.custom.js"></script>
+</head>
+<body>
+	<div class="deck-container">
+
+		<!-- Begin slides. Just make elements with a class of slide. -->
+
+		<section class="slide">
+			<h1>Importing with JOSM</h1>
+			<h2>OpenStreetMap</h2>
+			<h3>MappingDC</h3>
+		</section>
+
+		<section class="slide">
+			<h2>Introduction</h2>
+			<p>
+This guide is just one part of the overall import process.  Please refert to the complete
+			</p>
+			<div id='GuideRef'>
+<a href="http://wiki.openstreetmap.org/wiki/Import/Guidelines">Import Guidelines</a>
+			</div>
+			<h3>Import Process</h3>
+			<ol>
+				<li>Process</li>
+				<li>License</li>
+				<li>Discussion with Community</li>
+				<li>Documentation</li>
+				<li>Accounts</li>
+				<li>Tags</li>
+				<li>Data</li>
+				<li>Specific Data Guidelines</li>
+			</ol>
+			<p>
+This guide is about the steps involved with using JOSM to import chunked data.  While originally written for the DC import, it may be useful in future imports.
+			</p>
+		</section>
+
+		<section class="slide">
+			<h2>Get Familiar with the Basics</h2>
+			<ul>
+				<li>Create an account for yourself at openstreetmap.org.</li>
+				<li>Practice making small changes via JOSM.</li>
+				<li>Install plugins like Building, and Terracing.</li>
+				<li>Enable the Remote Control in JOSM.  See Preferences.  Check Download object to new layer.</li>
+				<li>When JOSM opens, it should not ask you for an initial extent.  Uncheck Open this dialog on startup.</li>
+			</ul>
+		</section>
+
+		<section class="slide">
+			<h2>OSM Tasking Manager</h2>
+			<img style='float:right; width:600px' alt='Tasking Manager instructions' src='ig/tmi.png' />
+			<ol>
+				<li>Sign into Tasking Manager.  This may delegate you to sign into OSM.</li>
+				<li>Click Start contributing.</li>
+				<li>Click Take a task at random.</li>
+				<li>Click Start mapping.</li>
+			</ol>
+		</section>
+
+		<section class="slide">
+			<h2>OSM Tasking Manager</h2>
+			<img style='float:right; width:600px' alt='Tasking Manager instructions' src='ig/tme.png' />
+			<ol>
+				<li>TODO: If the task is too big, the convert script can be modified to produce smaller chunks.</li>
+				<li>Click Edit with JOSM.</li>
+				<li>JOSM will open with a chunk of work.</li>
+				<li>We'll come back to this screen later.</li>
+			</ol>
+		</section>
+
+		<section class="slide">
+			<h2>JOSM</h2>
+			<img style='float:right; width:600px' alt='Tasking Manager instructions' src='ig/josm_data_layers.png' />
+			<h3>Layers</h3>
+			<ul>
+				<li>In the top right we see 2 layers.</li>
+				<li>Data Layer 1 is the official OSM data.</li>
+				<li>buildings-addresses-449-1.osm is the data to be imported.</li>
+				<li>The green checkmark is the one being worked on at the current time.</li>
+			</ul>
+			<h3>Validation</h3>
+			<ul>
+				<li>In the bottom right we see validation for the selected layer.</li>
+				<li>The official OSM data is sprinkeled with errors and warning.</li>
+				<li>We are not responsible for fixing pre-existing issues, but you should know which ones exist before starting the import.</li>
+				<li>If one feature is selected, only it will be validated.</li>
+			</ul>
+		</section>
+
+		<section class="slide">
+			<h2>JOSM</h2>
+			<img style='float:right; width:600px' alt='Tasking Manager instructions' src='ig/josm_zoom_to_problem.png' />
+			<h3>Validate Layers Independently</h3>
+			<ol>
+				<li>Select nothing (press s, click blank spot)</li>
+				<li>Validate Data Layer 1</li>
+				<li>Click Validation</li>
+				<li>Right click on an issue and click Zoom to Problem</li>
+				<li>Take note of these issues</li>
+				<li>Select the import data layer</li>
+				<li>Click Validation</li>
+				<li>Resolve these issues before migrating data!</li>
+			</ol>
+		</section>
+
+		<section class="slide">
+			<h2>JOSM</h2>
+			<img style='float:right; width:600px' alt='Tasking Manager instructions' src='ig/josm_subset.png' />
+			<h3>Move some features</h3>
+			<ol>
+				<li>Select the import data layer</li>
+				<li>Select about 20 features</li>
+				<li>Don't select half a building</li>
+				<li>Copy these with control-c</li>
+				<li>Delete these with delete</li>
+				<li>Select the OSM layer</li>
+				<li>Paste with control-v</li>
+			</ol>
+			<p>You can also use shift-click to select multiple features.</p>
+		</section>
+
+		<section class="slide">
+			<h2>JOSM</h2>
+			<img style='float:right; width:600px' alt='Tasking Manager instructions' src='ig/josm_overlap.png' />
+			<h3>Validate these</h3>
+			<ol>
+				<li>Reselect these features and include the OSM features too!</li>
+				<li>Click Validation</li>
+				<li>Resolve these issues before migrating data!</li>
+				<li>Here we see we're importing a building on top of an existing building.</li>
+			</ol>
+			<p>Goofed up majorly, press control-z on each layer</p>
+		</section>
+
+		<section class="slide">
+			<h2>Case Style: Resolving an overlap</h2>
+			<p>Assume that the import data has better geometry, unless it looks terrible.</p>
+			<p>Resolve the tags.</p>
+			<table class='comparison_table'>
+				<tr>
+					<th>key</th>
+					<th>OSM</th>
+					<th>Import</th>
+				</tr>
+				<tr>
+					<td>building</td>
+					<td>yes</td>
+					<td>yes</td>
+				</tr>
+				<tr>
+					<td>addr:housenumber</td>
+					<td></td>
+					<td>1927</td>
+				</tr>
+				<tr>
+					<td>addr:postcode</td>
+					<td></td>
+					<td>20018</td>
+				</tr>
+				<tr>
+					<td>addr:street</td>
+					<td></td>
+					<td>Rhode Island Avenue Northeast</td>
+				</tr>
+				<tr>
+					<td>dcgis:gis_id</td>
+					<td></td>
+					<td>66554</td>
+				</tr>
+			</table>
+			<p>Let's assume here, that a super OSM mapper did a better job on the geometry than the import data.</p>
+			<p>In this case we would copy the tags from the Import feature to the OSM feature</p>
+			<ol>
+				<li>Select the import feature.</li>
+				<li>Select all tags you want to copy.</li>
+				<li>Select the OSM feature.</li>
+				<li>Pres control-shift-v (Paste Tags).</li>
+				<li>Select the import feature and delete it.</li>
+				<li>Select the features in the area and revalidate.</li>
+			</ol>
+			<p>TODO: Can we get JOSM to show us this table?</p>
+		</section>
+
+		<section class="slide">
+			<h2>Resolving issues case by case</h2>
+			<ol>
+				<li>We will document the types of issues we will run into and use this as a reference</li>
+			</ol>
+		</section>
+
+		<section class="slide">
+			<h2>Case Style: Resolving nodes on lines</h2>
+		</section>
+
+		<section class="slide">
+			<h2>Case Style: Resolving ways ending near each other</h2>
+		</section>
+
+		<section class="slide">
+			<h2></h2>
+		</section>
+
+		<!-- End slides. -->
+
+		<!-- Begin extension snippets. Add or remove as needed. -->
+
+		<!-- deck.navigation snippet -->
+		<div aria-role="navigation">
+			<a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+			<a href="#" class="deck-next-link" title="Next">&#8594;</a>
+		</div>
+
+		<!-- deck.status snippet -->
+		<p class="deck-status" aria-role="status">
+			<span class="deck-status-current"></span>
+			/
+			<span class="deck-status-total"></span>
+		</p>
+
+		<!-- deck.goto snippet -->
+		<form action="." method="get" class="goto-form">
+			<label for="goto-slide">Go to slide:</label>
+			<input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
+			<datalist id="goto-datalist"></datalist>
+			<input type="submit" value="Go">
+		</form>
+
+		<!-- End extension snippets. -->
+	</div>
+
+<!-- Required JS files. -->
+<script src="jquery.min.js"></script>
+<script src="core/deck.core.js"></script>
+
+<!-- Extension JS files. Add or remove as needed. -->
+<script src="extensions/menu/deck.menu.js"></script>
+<script src="extensions/goto/deck.goto.js"></script>
+<script src="extensions/status/deck.status.js"></script>
+<script src="extensions/navigation/deck.navigation.js"></script>
+<script src="extensions/scale/deck.scale.js"></script>
+
+<!-- Initialize the deck. You can put this in an external file if desired. -->
+<script>
+	$(function() {
+		$.deck('.slide');
+	});
+</script>
+</body>
+</html>
